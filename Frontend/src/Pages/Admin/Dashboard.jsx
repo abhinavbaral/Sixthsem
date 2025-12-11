@@ -5,9 +5,13 @@ import Footer from '../../Components/common/Footer';
 
 const Dashboard = () => {
     return (
-        <div>
+        <div className="min-h-screen bg-green-50 flex flex-col">
             <Header />
-            <AdminDashboard />
+
+            <main className="flex-grow py-8 px-6">
+                <AdminDashboard />
+            </main>
+
             <Footer />
         </div>
     );

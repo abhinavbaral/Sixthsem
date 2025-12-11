@@ -1,61 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../Contexts/ProductContext';
-import CartItem from './CartItem';
+
 
 const Cart = () => {
-    const { cart } = useProducts();
-    const [localCart, setLocalCart] = useState(cart);
+  const { cart, removeFromCart, updateCartQuantity } = useProducts();
 
-    const updateQuantity = (id, quantity) => {
-        setLocalCart(
-            localCart.map(item =>
-                item.id === id ? { ...item, quantity } : item
-            )
-        );
-    };
+  const calculateTotal = () =>
+    cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    const removeFromCart = (id) => {
-        setLocalCart(localCart.filter(item => item.id !== id));
-    };
+  const clearCart = () => {
+    cart.forEach(item => removeFromCart(item.id));
+  };
 
-    const calculateTotal = () => {
-        return localCart
-            .reduce((total, item) => total + item.price * item.quantity, 0)
-            .toFixed(2);
-    };
+  if (!cart || cart.length === 0) {
+    return <div>Your cart is empty.</div>;
+  }
 
-    const clearCart = () => {
-        setLocalCart([]);
-    };
+  return (
+    <div className="cart-container">
+      <h1>Your Cart</h1>
+      <ul>
+        {cart.map(item => (
+          <li key={item.id}>
+            <p>{item.name}</p>
+            <p>Price: ${item.price}</p>
+            <p>
+              Quantity:
+              <button onClick={() => updateCartQuantity(item.id, item.quantity - 1)}>-</button>
+              {item.quantity}
+              <button onClick={() => updateCartQuantity(item.id, item.quantity + 1)}>+</button>
+            </p>
+            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+      <div>Subtotal: ${calculateTotal()}</div>
+      <button onClick={clearCart}>Clear Cart</button>
+      <Link to="/checkout">Proceed to Checkout</Link>
+    </div>
+  );
+};
 
-    if (localCart.length === 0) {
-        return (
-            <div>
-                <h2>Your Cart is Empty</h2>
-                <p>Add some products to get started!!</p>
-                <Link to="/">Continue Shopping</Link>
-            </div>
-        );
-    }
-
-    return (
-        <div>
-            <h1>Shopping Cart</h1>
-            <div>
-                <div>
-                    {localCart.map(item => (
-                        <CartItem
-                            key={item.id}
-                            item={item}
-                            onUpdateQuantity={updateQuantity}
-                            onRemove={removeFromCart}
-                        />
-                    ))}
-                </div>
-                <div>
-                    <h3>Order Summary</h3>
-                    <div>{localCart.length} items</div>
-                    <div>Subtotal: ${calculateTotal()}</div>
-                    <button onClick={clearCart}>Clear Cart</button>
-                    <Link to="/checkout">Proceed to Checkout</Link>
+export default Cart;

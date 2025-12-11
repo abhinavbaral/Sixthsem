@@ -1,37 +1,39 @@
 import React from 'react';
-import { useProducts } from '../../contexts/ProductContext';
+import { useProducts } from '../../Contexts/ProductContext';
 import ProductCard from './ProductCard';
-import styles from './ProductLists.module.css';
 
 const ProductList = () => {
-    const { products, loading, error } = useProducts();
+  const { products, loading, error } = useProducts();
 
-    if(loading) {
-         return <div className={`${styles.loading} loading`}> Loading products...</div>;
-    }
+  if (loading) {
+    return (
+      <div className="text-center text-blue-500 mt-8">
+        Loading products...
+      </div>
+    );
+  }
 
-    if(error) {
-        return <div className={`${styles.error} error`}> Error loading products:{error}</div>;
+  if (error) {
+    return (
+      <div className="text-center text-red-500 mt-8">
+        Error loading products: {error}
+      </div>
+    );
+  }
 
-    }
-     return (
-        <div className={styles.listContainer}>
-            <h2 className={styles.title}> Featured Products</h2>
-           <div className="product-grid">
-            {products.map((product) => (
-                <ProductCard key= {product.id} product={product}  />
-
-
-            ))}
-
-           </div>
-           {product.length === 0 && ( 
-            <p className={styles.noProducts}> No products avaiable.</p>
-
-           )}
-       
-        </div>
-
-     );
+  return (
+    <div className="max-w-6xl mx-auto p-4">
+      <h2 className="text-2xl font-bold text-blue-600 mb-4">Featured Products</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      {products.length === 0 && (
+        <p className="text-center text-green-600 mt-4">No products available.</p>
+      )}
+    </div>
+  );
 };
- export default ProductList;
+
+export default ProductList;

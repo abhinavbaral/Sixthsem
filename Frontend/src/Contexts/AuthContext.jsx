@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { ROLES } from '../utils/constants';
-import { login as authLogin, register as authRegister, logout as authLogout } from '../services/authService';
+import { ROLES } from '../utils/constants.jsx';
+import { login as authLogin, register as authRegister, logout as authLogout } from '../Services/authService';
+
 
 const AuthContext = createContext();
 
@@ -13,9 +14,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser) {
-            setUser(storedUser);
-        }
+        if (storedUser) setUser(storedUser);
         setLoading(false);
     }, []);
 
@@ -31,7 +30,7 @@ export const AuthProvider = ({ children }) => {
                 setError(result.error || 'Login failed');
                 return false;
             }
-        } catch (err) {
+        } catch {
             setError('Server error. Try again.');
             return false;
         }
@@ -49,7 +48,7 @@ export const AuthProvider = ({ children }) => {
                 setError(result.error || 'Registration failed');
                 return false;
             }
-        } catch (err) {
+        } catch {
             setError('Server error. Try again.');
             return false;
         }
@@ -61,7 +60,7 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             localStorage.removeItem('user');
             return true;
-        } catch (err) {
+        } catch {
             setError('Logout failed');
             return false;
         }
@@ -80,3 +79,4 @@ export const AuthProvider = ({ children }) => {
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+export default AuthContext;

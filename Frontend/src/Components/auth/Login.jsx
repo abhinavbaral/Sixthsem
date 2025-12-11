@@ -72,3 +72,10 @@ const Login = () => {
 
                 <p>
                     Don't have an account? <Link to="/register">Register here</Link>
+                </p>
+            </form>
+        </div>
+    );
+};
+
+export default Login;
