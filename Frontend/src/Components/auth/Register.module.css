@@ -1,0 +1,101 @@
+.registerContainer {
+    max-width: 400px;
+    margin: 3rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #232f3e;
+}
+
+.input, .select {
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input:focus, .select:focus {
+    outline: none;
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255,153,0,0.5);
+}
+
+.btn {
+    background: #ff9900;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+
+}
+
+.btn:hover {
+    background: #e68900;
+
+}
+
+.error {
+    background: #fee;
+    color: #b12704;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: 1px solid #b12704;
+    text-align: center;
+}
+
+.success {
+    background: #e6f4ea;
+    color: #2e7d32;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: 1px solid #2efd32;
+    text-align: center;
+
+}
+
+.loginText {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+.loginText a {
+    color: #ff9900;
+    text-decoration: none;
+}
+
+.loginText a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

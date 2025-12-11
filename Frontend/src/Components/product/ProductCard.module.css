@@ -1,0 +1,92 @@
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Equal height in grids */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.link:hover .image {
+  transform: scale(1.05);
+}
+
+.info {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  color: #333;
+  height: 2.5em; /* Fixed height for consistent cards */
+  overflow: hidden;
+  display: -webkit-box; /* For multi-line truncation in WebKit browsers */
+  
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.price {
+  color: #B12704;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.addBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.addBtn:hover {
+  background: #e68900;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Remove margin-bottom from .card if your grid uses gap for spacing */
+  
+
+  .image {
+    height: 150px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+}

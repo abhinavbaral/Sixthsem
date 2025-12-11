@@ -1,0 +1,114 @@
+.homePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  background: linear-gradient(135deg, #232f3e 0%, #ff9900 100%); /* Gradient for attractiveness */
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1s ease-out; /* From globals.css */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://via.placeholder.com/1920x400?text=E-Shop+Hero') center/cover; /* Replace with real image */
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.greeting {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.heroBtn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid white;
+  color: white;
+  border-radius: 50px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.heroBtn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.searchInfo {
+  text-align: center;
+  margin: 1rem 0 2rem;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 0 1rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Responsive (Mobile-First) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .greeting {
+    font-size: 1.1rem;
+  }
+
+  .heroBtn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .mainContent {
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+}
