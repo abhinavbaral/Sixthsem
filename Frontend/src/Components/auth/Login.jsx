@@ -22,56 +22,61 @@ const Login = () => {
 
         const success = await login(email, password, role);
         if (success) {
-            if (role === 'admin') {
-                navigate('/admin/dashboard');
-            } else {
-                navigate('/');
-            }
+            navigate(role === 'admin' ? '/admin/dashboard' : '/');
         } else {
             setError('Invalid credentials');
         }
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                {error && <div>{error}</div>}
+        <div className="min-h-screen flex items-center justify-center bg-blue-50">
+            <form 
+                onSubmit={handleSubmit} 
+                className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+            >
+                <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Login</h2>
+                
+                {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
 
-                <label htmlFor="email">Email</label>
+                <label className="block mb-1 font-semibold">Email</label>
                 <input
-                    id="email"
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     required
                 />
 
-                <label htmlFor="password">Password</label>
+                <label className="block mb-1 font-semibold">Password</label>
                 <input
-                    id="password"
                     type="password"
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     required
                 />
 
-                <label htmlFor="role">Login as</label>
+                <label className="block mb-1 font-semibold">Login as</label>
                 <select
-                    id="role"
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
+                    className="w-full p-2 border rounded mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                     <option value="customer">Customer</option>
                     <option value="admin">Admin</option>
                 </select>
 
-                <button type="submit">Login</button>
+                <button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-2 rounded"
+                >
+                    Login
+                </button>
 
-                <p>
-                    Don't have an account? <Link to="/register">Register here</Link>
+                <p className="mt-4 text-center text-gray-600">
+                    Don't have an account? <Link className="text-blue-600 hover:underline" to="/register">Register here</Link>
                 </p>
             </form>
         </div>
