@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './output.css';
+
+
 
 // Components
 import Navbar from './Components/common/Navbar';
@@ -30,7 +33,6 @@ function App() {
       <AuthProvider>
         <ProductProvider>
           <div className="App">
-            <Navbar />
             <main className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -78,7 +80,7 @@ function App() {
                 />
               </Routes>
             </main>
-            <Footer />
+       ]
             <ToastContainer />
           </div>
         </ProductProvider>

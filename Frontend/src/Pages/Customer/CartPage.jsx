@@ -6,7 +6,7 @@ import Footer from '../../Components/common/Footer';
 const CartPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-green-50">
-      <Header />
+
 
       <main className="flex-1 max-w-6xl mx-auto px-4 py-8">
         <h1 className="text-3xl md:text-4xl font-bold text-blue-600 mb-6 text-center">
@@ -18,7 +18,7 @@ const CartPage = () => {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   );
 };
