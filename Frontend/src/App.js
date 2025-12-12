@@ -80,7 +80,6 @@ function App() {
                 />
               </Routes>
             </main>
-       ]
             <ToastContainer />
           </div>
         </ProductProvider>
@@ -89,4 +88,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;  
